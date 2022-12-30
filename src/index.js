@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Movies from './components/Movies';
 import NewMovies from './components/NewMovies';
 import Main from './components/main';
+import SignUp from './components/signup';
 
 
 
@@ -24,6 +25,10 @@ const roots = createBrowserRouter([{
     {
       path: "newmovies",
       element: <NewMovies />,
+    },
+    {
+      path: "signup",
+      element: <SignUp />,
     },
     
   ]

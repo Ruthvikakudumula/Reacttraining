@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+</head>
+
+<body>
+    <input placeholder="movie" id="movie" />
+    <button>add</button>
+    <ul id="movies"></ul>
+    <script>
+        fetch("http://localhost:4000/movies")
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                const listElement = document.getElementById("movies")
+                data.forEach((movie) => {
+                    const listitem = document.createElement("li");
+                    listitem.innerHTML = movie;
+                    listElement.append(listitem)
+                });
+            });
+
+        function addMovie() {
+            const value = document.getElementById("movie").value;
+            console.log(value)
+            fetch("http://localhost:4000/movie", {
+                method: "POST",
+                headers: {
+                    contentType: "application/json",
+                },
+                body: JSON.stringify({ name: value })
+            }).then(() => {
+                location.reload();
+            });
+        }
+
+    
+    </script>
+</body>
+
+</html>
